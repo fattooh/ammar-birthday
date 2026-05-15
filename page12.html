@@ -26,11 +26,12 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 500px;
+    max-width: 420px; /* 🛠️ صغرنا العرض الأقصى عشان مربع النص ميبقاش عريض بزيادة */
 }
 
 /* النص */
 .main-text {
+    font-size: 16px; /* 🛠️ تصغير حجم الخط */
     margin-bottom: 20px;
     line-height: 1.8;
 }
@@ -38,26 +39,30 @@ body {
 /* مربع الإدخال */
 textarea {
     width: 100%;
-    height: 150px;
+    height: 120px; /* 🛠️ تصغير الارتفاع */
     border: 1px solid black;
     outline: none;
     padding: 10px;
     font-family: 'lift';
+    font-size: 14px; /* 🛠️ تصغير خط الكتابة جوه المربع */
     resize: none;
+    box-sizing: border-box;
 }
 
 /* placeholder */
 textarea::placeholder {
     color: gray;
+    font-size: 14px; /* 🛠️ تصغير خط الـ placeholder */
 }
 
 /* الزرار */
 button {
     margin-top: 15px;
-    padding: 10px 20px;
+    padding: 8px 16px; /* 🛠️ تقليل المساحة الداخلية لتصغير الزرار */
     border: 1px solid black;
     background: white;
     font-family: 'lift';
+    font-size: 14px; /* 🛠️ تصغير حجم خط الزرار */
     cursor: pointer;
 }
 
@@ -74,9 +79,9 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
+    font-size: 16px; /* 🛠️ تصغير نص النهاية برضه عشان يتناسق مع الصفحة */
     opacity: 0;
-transition: opacity 1s;
+    transition: opacity 1s;
 }
 </style>
 </head>
@@ -96,7 +101,6 @@ transition: opacity 1s;
     </form>
 </div>
 
-<!-- النهاية -->
 <div id="finalText">
     بحبك ي عمار❤️.<br><br>
     بحبك اكتر مما تتخيل✨❤️.
@@ -128,9 +132,9 @@ form.addEventListener("submit", function(e){
 
         finalText.style.display = "block";
 
-setTimeout(() => {
-    finalText.style.opacity = "1"; // fade in
-}, 50);
+        setTimeout(() => {
+            finalText.style.opacity = "1"; // fade in
+        }, 50);
 
     },1000);
 });
