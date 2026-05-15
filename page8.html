@@ -40,24 +40,28 @@ body {
     position: relative; /* ✅ مهم */
 }
 
+/* 🛠️ تقريب السهم من النص الأول عن طريق تقليل المسافة تحت النص */
 .main-text {
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px; 
 }
 
-/* تم تقريب السهم من النص هنا */
+/* 🛠️ إلغاء المسافة العلوية تماماً للسهم ليلتصق بالكلام */
 .arrow {
     font-size: 50px;
     cursor: pointer;
-    margin-top: 5px; 
+    margin-top: 0px; 
 }
 
+/* 🛠️ تقليل الـ margin الأسفل للأبيات عشان السهم يقرب منها جداً */
 .poetry {
     font-family: 'poetry';
     font-size: 20px;
     line-height: 2;
+    margin-bottom: 5px;
 }
 
+/* 🛠️ إلغاء المسافة العلوية للزرار ليكون قريب مباشرة من الأبيات */
 .end-btn {
     padding: 10px 20px;
     border-radius: 20px;
@@ -65,6 +69,7 @@ body {
     background: white;
     cursor: pointer;
     font-family: 'custom';
+    margin-top: 0px; 
 }
 </style>
 </head>
@@ -90,7 +95,7 @@ body {
     </div>
 
     <div class="section poetry">
-        &nbsp;وَبِأَيِّ حَرْفٍ قَدْ أَصوغُ جَمالَكَ؟<br>
+        &nbsp;Wَبِأَيِّ حَرْفٍ قَدْ أَصوغُ جَمالَكَ؟<br>
         وَبِأَيِّ شِعْرٍ أَحْتَوي عَيْنَاكَ؟<br>
         ذَهَبَ الجَمالُ بِكُلِّ دارٍ يَبْحَثُ<br>
         حَتَّى أَتَاكَ مُقَبِّلاً يُمْنَاكَ
@@ -114,7 +119,7 @@ body {
     </div>
 
     <div class="section poetry">
-        الكَوْنُ عَيْنَاكَ لَا شَمْسٌ وَلَا قَمَرُ<br>
+        Kَوْنُ عَيْنَاكَ لَا شَمْسٌ وَلَا قَمَرُ<br>
         وَالرَّوْضُ خَدَّاكَ لَا غُصْنٌ وَلَا ثَمَرُ<br>
         وَأَنْتَ فِي دَوْحَةِ الْأَحْلَامِ أُغْنِيَةٌ<br>
         يَشْدُو بِهَا الْحُبُّ لَا نَايٌ وَلَا وَتَرُ
