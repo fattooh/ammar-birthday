@@ -46,11 +46,11 @@ body {
     margin-bottom: 5px; 
 }
 
-/* 🛠️ إلغاء المسافة العلوية تماماً للسهم ليلتصق بالكلام */
+/* 🛠️ تقريب السهم زيادة وتضييق المسافة العلوية ليلتصق بالكلام */
 .arrow {
     font-size: 50px;
     cursor: pointer;
-    margin-top: 0px; 
+    margin-top: -10px; 
 }
 
 /* 🛠️ تقليل الـ margin الأسفل للأبيات عشان السهم يقرب منها جداً */
@@ -61,7 +61,16 @@ body {
     margin-bottom: 5px;
 }
 
-/* 🛠️ إلغاء المسافة العلوية للزرار ليكون قريب مباشرة من الأبيات */
+/* 🛠️ تنسيق خاص للسكشن الأخير ليجمع الزرار والأبيات جنب بعض (الزرار على اليمين) */
+.last-section-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* المسافة بين الزرار والأبيات */
+}
+
+/* 🛠️ زر النهاية: يظهر بتأثير fade بعد ثانيتين */
 .end-btn {
     padding: 10px 20px;
     border-radius: 20px;
@@ -70,6 +79,15 @@ body {
     cursor: pointer;
     font-family: 'custom';
     margin-top: 0px; 
+    opacity: 0; /* يبدأ مخفي تماماً */
+    animation: fadeInBtn 1s forwards;
+    animation-delay: 2s; /* 🛠️ يستنى ثانيتين قبل ما يظهر */
+}
+
+/* انيميشن الظهور للزرار */
+@keyframes fadeInBtn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 </style>
 </head>
@@ -134,16 +152,19 @@ body {
         <div class="arrow" onclick="next()">⬇</div>
     </div>
 
-    <div class="section poetry">
-        أَرَاكَ فِي طَيِّ أَحْلَامِي وَفِي فِكْرِي<br>
-        ... وَلَسْتُ أَنْسَاكَ حَتَّى يَنْقَضِي عُمْرِي<br>
-        وَصِرْتَ عِنْدِي مِقْيَاسَ الجَمَالِ فَمَا <br>
-        رَأَيْتُ إِلَّاكَ فِي نَوْمِي وَفِي سَهَرِي<br>
-        فَدَتْكَ رُوحِي مِنْ حُزْنٍ يُلِمُّ وَمِنْ<br>
-        هَمٍّ يَطُولُ وَمِنْ وَجْدٍ وَمِنْ كَدَرِ
-
-        <br><br>
-        <button class="end-btn" onclick="goBack()">يلا نرجع</button>
+    <div class="section">
+        <div class="last-section-box">
+            <button class="end-btn" onclick="goBack()">يلا نرجع</button>
+            
+            <div class="poetry">
+                أَرَاكَ فِي طَيِّ أَحْلَامِي وَفِي فِكْرِي<br>
+                ... وَلَسْتُ أَنْسَاكَ حَتَّى يَنْقَضِي عُمْرِي<br>
+                وَصِرْتَ عِنْدِي مِقْيَاسَ الجَمَالِ فَمَا <br>
+                رَأَيْتُ إِلَّاكَ فِي نَوْمِي وَفِي سَهَرِي<br>
+                فَدَتْكَ رُوحِي مِنْ حُزْنٍ يُلِمُّ وَمِنْ<br>
+                هَمٍّ يَطُولُ وَمِنْ وَجْدٍ وَمِنْ كَدَرِ
+            </div>
+        </div>
     </div>
 
 </div>
