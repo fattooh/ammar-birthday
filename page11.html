@@ -53,7 +53,7 @@ button {
     cursor: pointer;
 }
 
-/* 🛠️ الكونتينر الرئيسي المتسنتر في نص الصفحة بالظبط ويجمع الصورة والرسالة */
+/* الكونتينر الرئيسي المتسنتر في نص الصفحة بالظبط ويجمع الصورة والرسالة */
 .main-wrapper {
     display: flex;
     align-items: center;
@@ -75,7 +75,7 @@ button {
 
 .content-box img {
     width: 250px;
-    height: auto; /* 🛠️ بيحافظ على الطول متناسق بنفس النسبة تلقائيًا مع العرض */
+    height: auto; /* بيحافظ على الطول متناسق بنفس النسبة تلقائيًا مع العرض */
     border-radius: 15px;
     cursor: pointer;
 }
@@ -88,7 +88,7 @@ button {
     text-align: center;
 }
 
-/* 🛠️ زر النهاية: يظهر تحت الصورة بالظبط بدون التأثير على أبعادها */
+/* زر النهاية */
 #nextBtn {
     position: absolute;
     top: calc(100% + 15px); /* تحت الصورة مباشرة بمسافة ثابتة */
@@ -102,7 +102,7 @@ button {
     cursor: pointer;
 }
 
-/* 🛠️ تأثير الـ Fade للزرار والرسالة */
+/* تأثير الـ Fade للزرار والرسالة */
 .fade-in-effect {
     animation: fadeInAnimation 1s forwards;
 }
@@ -112,7 +112,7 @@ button {
     to { opacity: 1; }
 }
 
-/* 🛠️ الرسالة مصغرة ومظبوطة على اليسار */
+/* الرسالة مصغرة ومظبوطة على اليسار */
 #message {
     width: 50%;
     max-width: 500px;
@@ -123,34 +123,40 @@ button {
     transition: opacity 0.7s ease;
 }
 
-/* 🛠️ التعديل المخصوص للموبايل للحفاظ على الوضع الأفقي والتصغير بنفس النسبة */
+/* 🛠️ تعديل التكحيل والرفع لفوق المخصوص للموبايل */
 @media (max-width: 768px) {
+    body {
+        align-items: flex-start; /* 🛠️ تغيير السنترة عشان تبدأ العناصر من الفوق */
+    }
+
     .main-wrapper {
-        gap: 20px; /* تقليل المسافة بين العناصر ليناسب الموبايل */
+        gap: 15px; /* تقليل المسافة البينية */
         width: 95%;
+        margin-top: 25px; /* 🛠️ رفع الغلاف كله لفوق الصفحة بمسافة بسيطة وذكية */
+        align-items: flex-start; /* يرفع الرسالة والصورة بمحاذاة علوية واحدة */
     }
 
     .content-box img {
-        width: 130px; /* 🛠️ تصغير عرض الصورة على الموبايل والطول هيصغر تلقائي بنفس النسبة */
+        width: 110px; /* 🛠️ صغرنا الصورة زيادة عشان نكسب مساحة طولية وعرضية */
     }
 
     .top-text {
-        font-size: 11px; /* تصغير نص التنبيه ليناسب الحجم الجديد */
-        max-width: 130px;
-        margin-bottom: 10px;
+        font-size: 10px; /* تصغير نص التنبيه */
+        max-width: 110px;
+        margin-bottom: 8px;
     }
 
     #message {
-        width: 60%;
-        font-size: 11px; /* تصغير خط الرسالة عشان متمطش الصفحة بالطول */
-        line-height: 1.6;
+        width: 65%;
+        font-size: 10px; /* 🛠️ تصغير خط الرسالة زيادة عشان يستغل المساحة المتاحة أفقياً تماماً */
+        line-height: 1.5;
     }
 
     #nextBtn {
-        width: 110px; /* تصغير الزرار ليناسب حجم الصورة الجديد */
-        font-size: 13px;
-        padding: 7px;
-        top: calc(100% + 10px);
+        width: 95px; /* تصغير الزرار ليناسب الموبايل */
+        font-size: 11px;
+        padding: 5px;
+        top: calc(100% + 8px);
     }
 }
 </style>
@@ -180,7 +186,7 @@ button {
     <div id="message">
     كل سنة وانت طيب يا أحلى حاجة حصلتلي❤️.<br>
     بجد أنا بحب ضحكتك، بحب عينيك، بحب ذوقك، بحب أسلوبك، وبحب قد إيه أنت شخص بيرفكت.. بحبك فشششخ.. <br>
-    كل يوم.. أول حاجة بتيجي في بالي هي أنت, وأول صورة بشوفها هي صورتك اللي محفورة في قلبي قبل عقلي. وكل مرة أكلمك فيها بلاقي نفسي ببتسم زي العبيط قدام التليفون من غير ما أحس.<br>
+    كل يوم.. أول حاجة بتيجي في بالي هي أنت، وأول صورة بشوفها هي صورتك اللي محفورة في قلبي قبل عقلي. وكل مرة أكلمك فيها بلاقي نفسي ببتسم زي العبيط قدام التليفون من غير ما أحس.<br>
     مش متخيل قد إيه أنت فارق معايا.. مجرد دقيقة كلام معاك بتقلب يومي كله للأحسن. ومن ساعة ما دخلت حياتي وكل حاجة اتغيرت، الأيام بقت أخف، الضحكة زادت، شكراً يا عمور❤️.<br>
     مش عارف ده سحر ولا إيه، بس اللي عارفه إني ممتن جدًا إنك في حياتي، ومش عايز ده يخلص أبدًا. ربنا يخليك ليا ويديك كل السعادة اللي بتديهالي وأكتر.. يوم ميلاد سعيد يا أحب حد لقلبي🎂❤️.
     </div>
@@ -194,19 +200,16 @@ function toggle(){
     video.paused ? video.play() : video.pause();
 }
 
-/* نهاية الفيديو والانتقال المباشر للكونتينر المتسنتر */
 video.onended = () => {
     let vidSec = document.getElementById("videoSection");
     vidSec.style.opacity = "0";
 
     setTimeout(()=>{
         vidSec.style.display = "none";
-        // إظهار الغلاف الرئيسي المتسنتر
         document.getElementById("mainWrapper").style.display = "flex";
     }, 1000);
 };
 
-/* اظهار الرسالة والزرار بالأنيميشن والتوقيت المظبوط */
 function showMessage(){
     let msg = document.getElementById("message");
 
@@ -215,7 +218,7 @@ function showMessage(){
         msg.style.opacity = "1";
     }, 50);
 
-    // 🛠️ ظهور الزرار بتأثير Fade بعد 5 ثواني بالظبط تحت الصورة
+    // ظهور الزرار بتأثير Fade بعد 5 ثواني
     setTimeout(()=>{
         let btn = document.getElementById("nextBtn");
         btn.style.display = "inline-block";
@@ -223,7 +226,6 @@ function showMessage(){
     }, 5000);
 }
 
-/* الانتقال */
 function goNext(){
     window.location.href = "page12.html";
 }
