@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ammar’s Birthday</title>
 
 <style>
@@ -14,7 +15,7 @@ body {
     margin: 0;
     background: white;
     font-family: 'lift';
-    overflow: hidden;
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,29 +54,29 @@ button {
     cursor: pointer;
 }
 
-/* الكونتينر الرئيسي المتسنتر في نص الصفحة بالظبط ويجمع الصورة والرسالة */
+/* الكونتينر الرئيسي المتسنتر */
 .main-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px; /* المسافة المريحة بين الصورة والرسالة */
+    gap: 50px; 
     width: 90%;
     max-width: 1000px;
 }
 
 /* ستايل الجزء الخاص بالصورة والزرار */
 .content-box {
-    position: relative; /* مهم لتثبيت الزرار تحته */
+    position: relative; 
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-shrink: 0; /* يمنع انضغاط الصورة أفقيًا */
+    flex-shrink: 0; 
 }
 
 .content-box img {
     width: 250px;
-    height: auto; /* بيحافظ على الطول متناسق بنفس النسبة تلقائيًا مع العرض */
+    height: auto; 
     border-radius: 15px;
     cursor: pointer;
 }
@@ -91,8 +92,8 @@ button {
 /* زر النهاية */
 #nextBtn {
     position: absolute;
-    top: calc(100% + 15px); /* تحت الصورة مباشرة بمسافة ثابتة */
-    width: 140px; /* تصغير عرض الزرار */
+    top: calc(100% + 15px); 
+    width: 140px; 
     padding: 10px;
     border-radius: 25px;
     border: 1px solid black;
@@ -102,7 +103,7 @@ button {
     cursor: pointer;
 }
 
-/* تأثير الـ Fade للزرار والرسالة */
+/* تأثير الـ Fade */
 .fade-in-effect {
     animation: fadeInAnimation 1s forwards;
 }
@@ -112,7 +113,7 @@ button {
     to { opacity: 1; }
 }
 
-/* الرسالة مصغرة ومظبوطة على اليسار */
+/* الرسالة */
 #message {
     width: 50%;
     max-width: 500px;
@@ -123,37 +124,37 @@ button {
     transition: opacity 0.7s ease;
 }
 
-/* 🛠️ تعديل التكحيل والرفع لفوق المخصوص للموبايل */
+/* 🛠️ التعديل الحاسم للموبايل بعد إضافة الـ viewport والرفع لفوق */
 @media (max-width: 768px) {
     body {
-        align-items: flex-start; /* 🛠️ تغيير السنترة عشان تبدأ العناصر من الفوق */
+        align-items: flex-start; /* رفع العناصر لأعلى الشاشة */
     }
 
     .main-wrapper {
-        gap: 15px; /* تقليل المسافة البينية */
+        gap: 15px; 
         width: 95%;
-        margin-top: 25px; /* 🛠️ رفع الغلاف كله لفوق الصفحة بمسافة بسيطة وذكية */
-        align-items: flex-start; /* يرفع الرسالة والصورة بمحاذاة علوية واحدة */
+        margin-top: 30px; /* مسافة من فوق الشاشة */
+        align-items: flex-start; 
     }
 
     .content-box img {
-        width: 110px; /* 🛠️ صغرنا الصورة زيادة عشان نكسب مساحة طولية وعرضية */
+        width: 110px; /* تصغير متناسق للصورة */
     }
 
     .top-text {
-        font-size: 10px; /* تصغير نص التنبيه */
+        font-size: 10px; 
         max-width: 110px;
         margin-bottom: 8px;
     }
 
     #message {
         width: 65%;
-        font-size: 10px; /* 🛠️ تصغير خط الرسالة زيادة عشان يستغل المساحة المتاحة أفقياً تماماً */
+        font-size: 10px; /* تصغير الفونت عشان ميمطش الصفحة */
         line-height: 1.5;
     }
 
     #nextBtn {
-        width: 95px; /* تصغير الزرار ليناسب الموبايل */
+        width: 95px; 
         font-size: 11px;
         padding: 5px;
         top: calc(100% + 8px);
@@ -218,7 +219,6 @@ function showMessage(){
         msg.style.opacity = "1";
     }, 50);
 
-    // ظهور الزرار بتأثير Fade بعد 5 ثواني
     setTimeout(()=>{
         let btn = document.getElementById("nextBtn");
         btn.style.display = "inline-block";
