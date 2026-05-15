@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar's Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: 'custom';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.frame {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    width: 370px;
+    box-sizing: border-box;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.box {
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: white;
+}
+
+/* التعديل الوحيد */
+.img-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+@media (max-width: 800px) {
+    .wrapper {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <img class="img" src="img1.jpeg">
+
+    <div class="frame">
+
+        <div class="title">اختار مرحلة</div>
+
+        <div class="grid">
+
+            <div class="box" onclick="location.href='page5.html'">
+                <img src="videoicon.jpg" class="img-icon">
+            </div>
+
+            <div class="box" onclick="location.href='page6.html'">
+                <img src="videoicon.jpg" class="img-icon">
+            </div>
+
+            <div class="box" onclick="location.href='page7.html'">
+                <img src="envelope.jpg" class="img-icon">
+            </div>
+
+            <div class="box" onclick="location.href='page8.html'">
+                <img src="poem.jpg" class="img-icon">
+            </div>
+
+            <div class="box" onclick="location.href='page9.html'">
+                <img src="note.jpeg" class="img-icon">
+            </div>
+
+            <div class="box" onclick="location.href='page10.html'">
+                <img src="camera.jpg" class="img-icon">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

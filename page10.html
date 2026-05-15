@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar’s Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: 'custom', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* الكونتينر */
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* كونتينر يجمع النص والفريم جنب بعض */
+.media-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* المسافة الثابتة بين النص وفريم الصورة */
+}
+
+/* النص ثابت في مكانه تماماً */
+.text {
+    font-size: 22px;
+    white-space: nowrap; /* يمنع النص ينزل في سطرين */
+}
+
+/* 🛠️ فريم ثابت الحجم للصورة عشان النص ميتأثرش بأبعادها */
+.img-frame {
+    height: 300px;
+    width: 400px; /* عرض افتراضي ثابت ومناسب لأغلب الصور */
+    max-width: 60vw; /* حماية للشاشات الصغيرة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* الصور جوة الفريم */
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain; /* 🛠️ بيخلي الصورة تحتفظ بأبعادها جوة الفريم بدون ما تغطي على النص */
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+/* إخفاء */
+.hidden {
+    opacity: 0;
+}
+
+/* النص الأخير */
+.final-text {
+    display: none;
+    width: 80%;
+    margin: auto;
+    line-height: 1.6;
+}
+
+/* fade */
+.fade-in {
+    animation: fadeIn 0.6s forwards;
+}
+
+/* انيميشن أبطأ للزرار */
+.fade-in-slow {
+    animation: fadeIn 1.5s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.6s forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+/* زر */
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: 1px solid black;
+    background: white;
+    font-family: 'custom';
+    font-size: 18px;
+    display: none;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="media-box" id="mediaBox">
+        <div class="text" id="hint">اضغط عليها</div>
+        
+        <div class="img-frame">
+            <img id="mainImg" src="img3.jpg">
+        </div>
+    </div>
+
+    <div class="final-text" id="finalText">
+        بحبك اوي ي عمور..<br>
+        موصفلكش شعوري وانا بعمل الصفحة دي بالذات..<br>
+        صور مش عادية ابدا وشكلك فيها حلو اوي بجد، ضحكتك في اللي في الصور بحبها اوي اوي برضو ومشفتش زيها خالص! ولا عمري تنحت في صور بالشكل ده!!<br>
+        الصور دي تثبت قد ايه انت حلو ومميز، مش عارف اقول ايه ولا ايه، بس اللي ممكن اقوله فعلا ان شكلك في الصور دي خطف قلبي اكتر ما هو مخطوف اصلا❤️..
+    </div>
+
+    <button id="nextBtn" onclick="goNext()">يلا نكمل</button>
+
+</div>
+
+<audio id="boom" src="boom.mp3"></audio>
+
+<script>
+const images = [
+    "img3.jpg",
+    "img5.jpeg",
+    "img8.jpeg",
+    "img11.jpeg",
+    "img10.jpeg",
+    "img7.jpeg",
+    "img13.jpeg",
+    "img9.jpeg",
+    "img12.jpeg"
+];
+
+let index = 0;
+
+const img = document.getElementById("mainImg");
+const mediaBox = document.getElementById("mediaBox");
+const finalText = document.getElementById("finalText");
+const btn = document.getElementById("nextBtn");
+const boom = document.getElementById("boom");
+
+img.onclick = () => {
+
+    boom.currentTime = 0;
+    boom.play();
+
+    if (index < images.length - 1) {
+
+        index++;
+        img.src = images[index];
+
+    } else {
+
+        mediaBox.classList.add("fade-out");
+
+        setTimeout(() => {
+            mediaBox.style.display = "none";
+
+            finalText.style.display = "block";
+            finalText.classList.add("fade-in");
+
+            btn.style.display = "inline-block";
+            btn.classList.add("fade-in-slow");
+
+        }, 600);
+    }
+};
+
+function goNext() {
+    window.location.href = "page11.html";
+}
+</script>
+
+</body>
+</html>

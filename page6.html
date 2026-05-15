@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar's Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-frame {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+video {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 16/9;
+    display: block;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 10px;
+    transition: opacity 0.5s ease;
+}
+
+.progress {
+    flex: 1;
+}
+
+.time {
+    font-size: 14px;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    transition: opacity 0.5s ease;
+}
+
+button {
+    padding: 8px 15px;
+    border: 1px solid black;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'custom';
+}
+
+.back-btn {
+    display: none;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="video-frame">
+        <video id="video">
+            <source src="video2.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="progress-container" id="progressContainer">
+        <input type="range" id="progress" class="progress" value="0">
+        <span class="time" id="time">0:00 / 0:00</span>
+    </div>
+
+    <div class="controls" id="controls">
+        <button onclick="forward()">+10</button>
+        <button onclick="playPause()">تشغيل / ايقاف</button>
+        <button onclick="backward()">-10</button>
+    </div>
+
+    <button class="back-btn" id="backBtn" onclick="goBack()">رجعني</button>
+
+</div>
+
+<script>
+const video = document.getElementById("video");
+const progress = document.getElementById("progress");
+const controls = document.getElementById("controls");
+const backBtn = document.getElementById("backBtn");
+const timeText = document.getElementById("time");
+const progressContainer = document.getElementById("progressContainer");
+
+function formatTime(t) {
+    const m = Math.floor(t / 60);
+    const s = Math.floor(t % 60);
+    return m + ":" + (s < 10 ? "0" : "") + s;
+}
+
+function playPause() {
+    video.paused ? video.play() : video.pause();
+}
+
+function forward() {
+    video.currentTime += 10;
+}
+
+function backward() {
+    video.currentTime -= 10;
+}
+
+video.addEventListener("timeupdate", () => {
+    progress.value = (video.currentTime / video.duration) * 100 || 0;
+    timeText.textContent =
+        formatTime(video.currentTime) + " / " + formatTime(video.duration || 0);
+});
+
+progress.addEventListener("input", () => {
+    video.currentTime = (progress.value / 100) * video.duration;
+});
+
+video.addEventListener("ended", () => {
+    controls.style.opacity = "0";
+    progressContainer.style.opacity = "0";
+
+    setTimeout(() => {
+        controls.style.display = "none";
+        progressContainer.style.display = "none";
+        backBtn.style.display = "block";
+
+        setTimeout(() => {
+            backBtn.style.opacity = "1";
+        }, 50);
+    }, 500);
+});
+
+function goBack() {
+    window.location.href = "page4.html";
+}
+</script>
+
+</body>
+</html>

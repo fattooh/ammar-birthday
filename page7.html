@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar's Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: 'custom';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* الكونتينر */
+.container {
+    width: 90%;
+    max-width: 600px;
+    direction: rtl;
+    text-align: right;
+}
+
+/* النص الأول */
+.top-text {
+    text-align: center;
+    margin-bottom: 20px;
+    white-space: pre-line;
+}
+
+/* النص التاني */
+.bottom-text {
+    opacity: 0;
+    transition: opacity 1s ease;
+    white-space: pre-line;
+}
+
+/* الزر */
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+button {
+    padding: 8px 15px;
+    border: 1px solid black;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'custom';
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top-text">
+عمور ي روحي
+بجد ومن كل قلبي..
+    </div>
+
+    <div class="bottom-text" id="bottomText">
+كلامي معاك بقا أحسن جزء في يومي من غير ما أحس. بقيت بستنى اللحظة اللي ممكن ابعتلك فيها، ولا عمرها حصلت مع حد، مش عارف أحدد إيه بالظبط اللي وقعني الوقعة دي، يمكن عينيك اللي يسحروا، يمكن ذوقك وحلاوتك، يمكن روحك، أو يمكن كلهم، بس اللي متأكد منه إني وقعت، ووقعة جامدة فشخ كمان، بس مش عايز اقوم منها ابدا. 
+وجودك في حياتي بقا حاجة كبيرة فششششخ، لدرجة إني لو صحيت يوم ونسيت كل حاجة حواليا حتى اسمي، أكيد مش هنساك ولا حتى هنسى اسمك، شوفتك لوحدها بتخليني أسعد بني ادم عالكوكب! ما بالك بأي حاجة غيرها؟.
+أوقات كتير بقعد أفكر كتير بيني وبين نفسي.. أنا عملت إيه عظيم في حياتي عشان ربنا يرزقني بواحد زيك؟ واحد روحه جميلة، نضيف من جواه، ووجوده مريح كده بشكل مش طبيعي… بجد، أنت نعمة عظيمة اوي اوي اوي في حياتي❤️.
+    </div>
+
+    <div class="btn-container" id="btnContainer">
+        <button onclick="goBack()">دوس لما تخلص</button>
+    </div>
+
+</div>
+
+<script>
+const bottomText = document.getElementById("bottomText");
+const btnContainer = document.getElementById("btnContainer");
+
+setTimeout(() => {
+    bottomText.style.opacity = "1";
+
+    setTimeout(() => {
+        btnContainer.style.opacity = "1";
+    }, 1000);
+
+}, 3000);
+
+function goBack() {
+    window.location.href = "page4.html";
+}
+</script>
+
+</body>
+</html>

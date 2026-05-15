@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar's Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: 'custom';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+      direction: rtl;
+    text-align: center;
+}
+
+.title {
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.sub {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.timer {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+    font-family: 'custom';
+    transform: translate(-50%, -50%);
+}
+
+.popup {
+    position: fixed;
+    background: #f5f5f5;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    width: 260px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.popup button {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    width: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title" id="title">دوس عالزرار عشان نبدأ</div>
+<div class="sub">معاك دقيقة ونص!! </div>
+<div class="timer" id="timer"></div>
+
+<button id="btn" onclick="startGame()">ابدأ</button>
+
+<div class="popup" id="popup">
+    <h2 id="popTitle"></h2>
+    <p id="popText"></p>
+    <button id="btn1"></button>
+    <button id="btn2" style="display:none;"></button>
+</div>
+
+<audio id="winSound" src="win.mp3"></audio>
+<audio id="loseSound" src="lose.mp3"></audio>
+
+<script>
+let started = false;
+let time = 0;
+
+// بداية سريعة جدًا
+let speed = 300;
+
+let moveInterval, timerInterval;
+
+function startGame() {
+    if (!started) {
+        started = true;
+
+        document.getElementById("title").innerText = "وريني";
+        document.getElementById("btn").innerText = "اقفشني";
+
+        moveInterval = setInterval(moveButton, speed);
+        timerInterval = setInterval(updateTime, 1000);
+    } else {
+        win();
+    }
+}
+
+function moveButton() {
+    let btn = document.getElementById("btn");
+
+    let x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    let y = Math.random() * (window.innerHeight - btn.offsetHeight);
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+function updateTime() {
+    time++;
+    document.getElementById("timer").innerText = time + "s";
+
+    // كل 30 ثانية تبطيء بسيطة (مش قوية)
+    if (time === 30 || time === 60) {
+        speed += 120;
+        clearInterval(moveInterval);
+        moveInterval = setInterval(moveButton, speed);
+    }
+
+    // النصوص
+    if (time === 30) {
+        document.getElementById("title").innerText = "نبطأ الزرار شوية عشانك";
+    }
+
+    if (time === 60) {
+        document.getElementById("title").innerText = "ايه يعم المستوى ده";
+    }
+
+    if (time === 90) {
+        document.getElementById("title").innerText = "لا مش مستواك ده يعم عمار";
+        lose();
+    }
+}
+
+function win() {
+    clearInterval(moveInterval);
+    clearInterval(timerInterval);
+
+    document.getElementById("winSound").play();
+
+    showPopup("عاش", "يخي انت فحل وربنا", "اللي بعدوووو", "page4.html");
+}
+
+function lose() {
+    clearInterval(moveInterval);
+    clearInterval(timerInterval);
+
+    document.getElementById("loseSound").play();
+
+    let popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    document.getElementById("popTitle").innerText = "احا";
+    document.getElementById("popText").innerText = "فضحتنا ايه المستوى ده";
+
+    let b1 = document.getElementById("btn1");
+    let b2 = document.getElementById("btn2");
+
+    b1.innerText = "مشينا من هنا";
+    b1.onclick = () => window.location.href = "page4.html";
+
+    b2.style.display = "block";
+    b2.innerText = "لا مش عايز";
+    b2.onclick = () => window.location.href = "page3b.html";
+}
+
+function showPopup(title, text, btnText, link) {
+    let popup = document.getElementById("popup");
+    popup.style.display = "block";
+
+    document.getElementById("popTitle").innerText = title;
+    document.getElementById("popText").innerText = text;
+
+    let b1 = document.getElementById("btn1");
+    b1.innerText = btnText;
+    b1.onclick = () => window.location.href = link;
+
+    document.getElementById("btn2").style.display = "none";
+}
+</script>
+
+</body>
+</html>

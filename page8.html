@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar's Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+@font-face {
+    font-family: 'poetry';
+    src: url('LateefSwashes-Bold.otf');
+}
+
+body {
+    margin: 0;
+    font-family: 'custom';
+    direction: rtl;
+    overflow: hidden;
+}
+
+.wrapper {
+    transition: transform 0.8s ease;
+}
+
+.section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* ✅ مهم */
+}
+
+.main-text {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* تم تقريب السهم من النص هنا */
+.arrow {
+    font-size: 50px;
+    cursor: pointer;
+    margin-top: 5px; 
+}
+
+.poetry {
+    font-family: 'poetry';
+    font-size: 20px;
+    line-height: 2;
+}
+
+.end-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+    font-family: 'custom';
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper" id="wrapper">
+
+    <div class="section">
+
+        <div class="main-text">ميصحش تعدي من غير ابيات برضو، يلا بينا</div>
+
+        <div class="arrow" onclick="next()">⬇</div>
+
+    </div>
+
+    <div class="section poetry">
+        عَيْنايَ أَنْتَ وأَنْتَ الشَّمْسُ والقَمَرُ <br>
+        مَلَكْتَ قَلْبي وَسِحْرُ الشَّوْقِ يَنْتَصِرُ<br>
+        ما كُنْتُ أَحْسَبُ أَنَّ الحُبَّ يَهْزِمُني<br>
+        حتَّى رَأَيْتُ جُيوشَ القَلْبِ تَنْقَهِرُ
+        <div class="arrow" onclick="next()">⬇</div>
+    </div>
+
+    <div class="section poetry">
+        &nbsp;وَبِأَيِّ حَرْفٍ قَدْ أَصوغُ جَمالَكَ؟<br>
+        وَبِأَيِّ شِعْرٍ أَحْتَوي عَيْنَاكَ؟<br>
+        ذَهَبَ الجَمالُ بِكُلِّ دارٍ يَبْحَثُ<br>
+        حَتَّى أَتَاكَ مُقَبِّلاً يُمْنَاكَ
+        <div class="arrow" onclick="next()">⬇</div>
+    </div>
+
+    <div class="section poetry">
+        يَا فَاتِناً بِالْحُبِّ قَلْبِي قَدْ مَلَكْتَ<br>
+        هَلْ أَنْتَ مِنْ حَوَّاءَ وَآدَمَ أَمْ مَلَكْ؟<br>
+        عَيْنِي إِذَا نَظَرَتْ لِحُسْنِكِ سَبَّحَتْ<br>
+        سُبْحَانَ مَنْ خَلَقَ الْجَمَالَ وَجَمَّلَكِ
+        <div class="arrow" onclick="next()">⬇</div>
+    </div>
+
+    <div class="section poetry">
+        الخمرُ يُسكر من يعاقر كأسَهُ <br>
+        وعيناكَ خمرٌ بلا كؤوسٍ تُسكرُ<br>
+        وعيناكَ سحرٌ مترفٌ كادَ يهلكني <br>
+        فمن عن جمالِ عينيكَ يصبرُ؟
+        <div class="arrow" onclick="next()">⬇</div>
+    </div>
+
+    <div class="section poetry">
+        الكَوْنُ عَيْنَاكَ لَا شَمْسٌ وَلَا قَمَرُ<br>
+        وَالرَّوْضُ خَدَّاكَ لَا غُصْنٌ وَلَا ثَمَرُ<br>
+        وَأَنْتَ فِي دَوْحَةِ الْأَحْلَامِ أُغْنِيَةٌ<br>
+        يَشْدُو بِهَا الْحُبُّ لَا نَايٌ وَلَا وَتَرُ
+        <div class="arrow" onclick="next()">⬇</div>
+    </div>
+
+    <div class="section poetry">
+        وأراكَ في كلِّ البقاعِ كأنما<br>
+        لا كوكب في فلكي يدورُ سواكَ<br>
+        ما عُدتُ أبصرُ في العوالمِ كلِّها<br>
+        قمراً سواكَ فَسُبْحَانَ مَن سوّاكَ
+        <div class="arrow" onclick="next()">⬇</div>
+    </div>
+
+    <div class="section poetry">
+        أَرَاكَ فِي طَيِّ أَحْلَامِي وَفِي فِكْرِي<br>
+        ... وَلَسْتُ أَنْسَاكَ حَتَّى يَنْقَضِي عُمْرِي<br>
+        وَصِرْتَ عِنْدِي مِقْيَاسَ الجَمَالِ فَمَا <br>
+        رَأَيْتُ إِلَّاكَ فِي نَوْمِي وَفِي سَهَرِي<br>
+        فَدَتْكَ رُوحِي مِنْ حُزْنٍ يُلِمُّ وَمِنْ<br>
+        هَمٍّ يَطُولُ وَمِنْ وَجْدٍ وَمِنْ كَدَرِ
+
+        <br><br>
+        <button class="end-btn" onclick="goBack()">يلا نرجع</button>
+    </div>
+
+</div>
+
+<script>
+let index = 0;
+let wrapper = document.getElementById("wrapper");
+
+function next() {
+    index++;
+    wrapper.style.transform = "translateY(-" + (index * 100) + "vh)";
+}
+
+function goBack() {
+    window.location.href = "page4.html";
+}
+</script>
+
+</body>
+</html>

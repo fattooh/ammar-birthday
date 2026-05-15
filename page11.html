@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Ammar’s Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'lift';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: 'lift';
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* اخفاء العناصر */
+#mainWrapper,
+#message,
+#nextBtn {
+    display: none;
+}
+
+/* الفيديو متسنتر في الشاشة */
+#videoSection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: opacity 1s;
+}
+
+video {
+    width: 350px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    background: white;
+    font-family: 'lift';
+    cursor: pointer;
+}
+
+/* 🛠️ الكونتينر الرئيسي المتسنتر في نص الصفحة بالظبط ويجمع الصورة والرسالة */
+.main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px; /* المسافة المريحة بين الصورة والرسالة */
+    width: 90%;
+    max-width: 1000px;
+}
+
+/* ستايل الجزء الخاص بالصورة والزرار */
+.content-box {
+    position: relative; /* مهم لتثبيت الزرار تحته */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-box img {
+    width: 250px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* النص فوق الصورة */
+.top-text {
+    font-size: 14px;
+    margin-bottom: 15px;
+    max-width: 250px;
+    text-align: center;
+}
+
+/* 🛠️ زر النهاية: يظهر تحت الصورة بالظبط بدون التأثير على أبعادها */
+#nextBtn {
+    position: absolute;
+    top: calc(100% + 15px); /* تحت الصورة مباشرة بمسافة ثابتة */
+    width: 140px; /* تصغير عرض الزرار */
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid black;
+    background: white;
+    font-family: 'lift';
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 🛠️ تأثير الـ Fade للزرار والرسالة */
+.fade-in-effect {
+    animation: fadeInAnimation 1s forwards;
+}
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 🛠️ الرسالة مصغرة ومظبوطة على اليسار */
+#message {
+    width: 50%;
+    max-width: 500px;
+    font-size: 15px;
+    line-height: 1.8;
+    text-align: justify;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div id="videoSection">
+    <video id="video">
+        <source src="video3.mp4">
+    </video>
+    <br>
+    <button onclick="toggle()">تشغيل / ايقاف</button>
+</div>
+
+<div class="main-wrapper" id="mainWrapper">
+    
+    <div class="content-box">
+        <div class="top-text">
+            عارف انك ضغطت كتير بس اضغط على جيري مرة واحدة بس
+        </div>
+        <img src="img2.jpg" onclick="showMessage()">
+        
+        <button id="nextBtn" onclick="goNext()">يلا نختم</button>
+    </div>
+
+    <div id="message">
+    كل سنة وانت طيب يا أحلى حاجة حصلتلي❤️.<br>
+    بجد أنا بحب ضحكتك، بحب عينيك، بحب ذوقك، بحب أسلوبك، وبحب قد إيه أنت شخص بيرفكت.. بحبك فشششخ.. <br>
+    كل يوم.. أول حاجة بتيجي في بالي هي أنت، وأول صورة بشوفها هي صورتك اللي محفورة في قلبي قبل عقلي. وكل مرة أكلمك فيها بلاقي نفسي ببتسم زي العبيط قدام التليفون من غير ما أحس.<br>
+    مش متخيل قد إيه أنت فارق معايا.. مجرد دقيقة كلام معاك بتقلب يومي كله للأحسن. ومن ساعة ما دخلت حياتي وكل حاجة اتغيرت، الأيام بقت أخف، الضحكة زادت، شكراً يا عمور❤️.<br>
+    مش عارف ده سحر ولا إيه، بس اللي عارفه إني ممتن جدًا إنك في حياتي، ومش عايز ده يخلص أبدًا. ربنا يخليك ليا ويديك كل السعادة اللي بتديهالي وأكتر.. يوم ميلاد سعيد يا أحب حد لقلبي🎂❤️.
+    </div>
+
+</div>
+
+<script>
+let video = document.getElementById("video");
+
+function toggle(){
+    video.paused ? video.play() : video.pause();
+}
+
+/* نهاية الفيديو والانتقال المباشر للكونتينر المتسنتر */
+video.onended = () => {
+    let vidSec = document.getElementById("videoSection");
+    vidSec.style.opacity = "0";
+
+    setTimeout(()=>{
+        vidSec.style.display = "none";
+        // إظهار الغلاف الرئيسي المتسنتر
+        document.getElementById("mainWrapper").style.display = "flex";
+    }, 1000);
+};
+
+/* اظهار الرسالة والزرار بالأنيميشن والتوقيت المظبوط */
+function showMessage(){
+    let msg = document.getElementById("message");
+
+    msg.style.display = "block";
+    setTimeout(()=>{
+        msg.style.opacity = "1";
+    }, 50);
+
+    // 🛠️ ظهور الزرار بتأثير Fade بعد 5 ثواني بالظبط تحت الصورة
+    setTimeout(()=>{
+        let btn = document.getElementById("nextBtn");
+        btn.style.display = "inline-block";
+        btn.classList.add("fade-in-effect");
+    }, 5000);
+}
+
+/* الانتقال */
+function goNext(){
+    window.location.href = "page12.html";
+}
+</script>
+
+</body>
+</html>

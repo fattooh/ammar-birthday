@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar’s Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'custom';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    font-family: 'custom';
+    direction: rtl;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative; /* ✅ عشان نضمن إن الزرار يتربط بمكان الكونتينر بالظبط */
+}
+
+.video-frame {
+    width: 35vw;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    border: 2px solid black;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+}
+
+video.show {
+    opacity: 1;
+}
+
+.card {
+    text-align: center;
+    width: 220px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 14px;
+}
+
+.title {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+.artist {
+    font-size: 15px;
+    color: gray;
+}
+
+.controls {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.play {
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+.progress {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* 🛠️ تعديل حجم ومكان زر الرجوع ليطابق الصورة تماماً */
+.back-btn {
+    position: absolute;
+    bottom: calc(100% + 15px); /* يظهر فوق الفريم بمسافة ثابتة ومظبوطة */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease;
+    padding: 8px 30px; /* تصغير الـ padding لحجم أرتب */
+    border-radius: 50px;
+    border: 1px solid black;
+    background: white;
+    cursor: pointer;
+    font-family: 'custom';
+    font-size: 15px; /* تصغير الفونت شوية عشان يبقى متناسق */
+    white-space: nowrap;
+}
+
+.show-btn {
+    opacity: 1;
+    visibility: visible;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <button class="back-btn" id="backBtn" onclick="goBack()">يلا نرجع</button>
+
+    <div class="card">
+        <img src="img4.jpeg">
+        <div class="title">Maak Alby</div>
+        <div class="artist">Amr Diab</div>
+        <div class="controls">
+            <div class="play" id="btn1" onclick="toggleVideo('v1','btn1')">▶</div>
+            <input type="range" id="p1" class="progress" value="0">
+        </div>
+    </div>
+
+    <div class="video-frame">
+        <video id="v1" src="MaakAlby.mp4"></video>
+        <video id="v2" src="Fenak.mp4"></video>
+    </div>
+
+    <div class="card">
+        <img src="img6.jpeg">
+        <div class="title">Fenak</div>
+        <div class="artist">Tommyy</div>
+        <div class="controls">
+            <div class="play" id="btn2" onclick="toggleVideo('v2','btn2')">▶</div>
+            <input type="range" id="p2" class="progress" value="0">
+        </div>
+    </div>
+</div>
+
+<script>
+let finished = { v1: false, v2: false };
+let v1 = document.getElementById("v1");
+let v2 = document.getElementById("v2");
+let p1 = document.getElementById("p1");
+let p2 = document.getElementById("p2");
+
+function toggleVideo(id, btnId) {
+    let video = document.getElementById(id);
+    let btn = document.getElementById(btnId);
+    let other = (id === "v1") ? v2 : v1;
+    let otherBtn = (id === "v1") ? btn2 : btn1;
+
+    other.pause();
+    other.classList.remove("show");
+    otherBtn.innerText = "▶";
+
+    video.classList.add("show");
+
+    if (video.paused) {
+        video.play();
+        btn.innerText = "⏸";
+    } else {
+        video.pause();
+        btn.innerText = "▶";
+    }
+}
+
+v1.ontimeupdate = () => { p1.value = (v1.currentTime / v1.duration) * 100; };
+v2.ontimeupdate = () => { p2.value = (v2.currentTime / v2.duration) * 100; };
+
+p1.oninput = () => { v1.currentTime = (p1.value / 100) * v1.duration; };
+p2.oninput = () => { v2.currentTime = (p2.value / 100) * v2.duration; };
+
+v1.onended = () => { finished.v1 = true; checkFinish(); };
+v2.onended = () => { finished.v2 = true; checkFinish(); };
+
+function checkFinish() {
+    if (finished.v1 && finished.v2) {
+        document.getElementById("backBtn").classList.add("show-btn");
+    }
+}
+
+function goBack() {
+    window.location.href = "page4.html";
+}
+</script>
+
+</body>
+</html>

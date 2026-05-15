@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammar’s Birthday</title>
+
+<style>
+@font-face {
+    font-family: 'lift';
+    src: url('liftablack.otf');
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: 'lift';
+    text-align: center;
+    overflow: hidden;
+}
+
+/* الكونتينر */
+#container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+}
+
+/* النص */
+.main-text {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+/* مربع الإدخال */
+textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid black;
+    outline: none;
+    padding: 10px;
+    font-family: 'lift';
+    resize: none;
+}
+
+/* placeholder */
+textarea::placeholder {
+    color: gray;
+}
+
+/* الزرار */
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    background: white;
+    font-family: 'lift';
+    cursor: pointer;
+}
+
+/* fade */
+.fade-out {
+    opacity: 0;
+    transition: 1s;
+}
+
+/* النهاية */
+#finalText {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+    opacity: 0;
+transition: opacity 1s;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+    <div class="main-text">
+        اخر حاجة معانا ي حبي هي دي<br>
+        اكتب هنا رسالة -متفتحش فيها اوي وهتعرف ليه- بس الرسالة دي مش هتوصلني، ولما تدوس على الزرار اللي تحت هيقفل لوحده، وابقا ابعتلي اي رسالة عالواتس عشان لسة مخلصتش وفاضل حاجة اخررررر حاجة وان شاء الله هتبسطك اكتر من الحوار ده كله
+    </div>
+
+    <form id="form">
+        <textarea name="message" placeholder="متفتحش فيها اوي.."></textarea>
+        <br>
+        <button type="submit">إنهاء</button>
+    </form>
+</div>
+
+<!-- النهاية -->
+<div id="finalText">
+    بحبك ي عمار❤️.<br><br>
+    بحبك اكتر مما تتخيل✨❤️.
+</div>
+
+<script>
+const form = document.getElementById("form");
+const container = document.getElementById("container");
+const finalText = document.getElementById("finalText");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let data = new FormData(form);
+
+    fetch("https://formspree.io/f/mwvyranj", {
+        method: "POST",
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    // fade كل الصفحة
+    container.classList.add("fade-out");
+
+    setTimeout(()=>{
+        container.style.display = "none";
+
+        finalText.style.display = "block";
+
+setTimeout(() => {
+    finalText.style.opacity = "1"; // fade in
+}, 50);
+
+    },1000);
+});
+</script>
+
+</body>
+</html>
